@@ -17,6 +17,9 @@ import fr.dta.Jdbc_spring.model.Book;
 @Configuration
 @ComponentScan
 public class App {
+	/*
+	 * Attention le projet est en VALIDATE
+	 */
 	public App() {
 		System.out.println("Start created");
 	}
@@ -53,7 +56,7 @@ public class App {
 		books.getAllRow();
 
 		books.insertBook(25, "olala il fait chaud", "Marthe laFouinne", new Date(2014-12-15), 1584);
-		// books.updateBook(5, "author", "Jean michel doudoux");
+		books.updateBook(5, "author", "Jean michel doudoux");
 		books.getAllRow();
 		books.deleteBook(25);
 		books.getAllRow();
