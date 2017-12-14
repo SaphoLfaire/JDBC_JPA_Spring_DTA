@@ -72,10 +72,16 @@ public class BookRepository {
 	 * des trucs qui avaient rien à voir alors j'ai oublié, MAIS en gros
 	 * il faut réimporter une instance du livre dans la session avant de 
 	 * le supprimer sinon ça marche pas.
+	 * DONC il ne faut PAS faire juste un entityManager.remove(objet) 
+	 * directement. Il faut tester si l'objet est dans la session, si
+	 * oui, on le supprimer, sinon, on le récupère, PUIS on le supprime. 
+	 * Le tout en une ligne : 
+	 * entityManager.remove(entityManager.contains(objet) ? objet : entityManager.merge(objet));
 	 */
 	public boolean delete(Book id) {
 		try {
-			entityManager.remove(id);
+			entityManager.remove(entityManager.contains(id) ? id : entityManager.merge(id));
+			//entityManager.remove(id);
 			
 			return true;
 		} catch (Exception e) {
@@ -86,7 +92,8 @@ public class BookRepository {
 	}
 	
 	/*
-	 * Ajoute une livre, pas de problème de session ou de commit/rollback ici.
+	 * Ajoute une livre, pas de problème de session ou de commit/rollback ici normalement, 
+	 * sinon faire la même chose que précédemment.
 	 */
 	public boolean add(Book b) {
 		try {

@@ -39,12 +39,15 @@ public class App {
 		b2.setNb_pages(458);
 		b2.setPubli(new Date());
 		b2.setTitle("La vie ou la pistolet à eau");
-		books.delete(b2);
+		//books.delete(b2);
 		System.out.println(books.getAll());
 		System.out.println("---Un livre en plus");
 		//books.add(b2);
 		System.out.println(books.getAll());
-		
+		System.out.println("---Modification");
+		//b2.setTitle("Prout en foli");
+		books.update(b2);
+		System.out.println(books.getAll());
 		
 		
 		
