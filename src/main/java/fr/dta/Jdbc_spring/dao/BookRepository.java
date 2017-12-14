@@ -15,8 +15,12 @@ import fr.dta.Jdbc_spring.model.Book;
 @Repository
 @Transactional
 public class BookRepository {
+	/*
+	 * Ne pas oublier le @Repository et le @Transactional au dessus de la class
+	 * Bonnes pratiques : tout mettre dans des try catch
+	 */
 
-	@PersistenceContext
+	@PersistenceContext // NE PAS OUBLIER
 	private EntityManager entityManager;
 
 	protected Session getSession() {
@@ -27,6 +31,9 @@ public class BookRepository {
 		entityManager.persist(entity);
 	}
 
+	/*
+	 * Renvoie la liste des livres
+	 */
 	public List<Book> getAll() {
 		try {
 			List<Book> b;
@@ -40,6 +47,9 @@ public class BookRepository {
 
 	}
 
+	/*
+	 * retourne le livre en fonction de l'id
+	 */
 	public Book getById(int id) {
 		try {
 			Book b = new Book();
@@ -55,7 +65,14 @@ public class BookRepository {
 		}
 
 	}
+	
 
+	/*
+	 * Bon la y a une couille, mais le prof a expliquer pendant 3h sur 
+	 * des trucs qui avaient rien à voir alors j'ai oublié, MAIS en gros
+	 * il faut réimporter une instance du livre dans la session avant de 
+	 * le supprimer sinon ça marche pas.
+	 */
 	public boolean delete(Book id) {
 		try {
 			entityManager.remove(id);
@@ -67,7 +84,10 @@ public class BookRepository {
 		}
 
 	}
-
+	
+	/*
+	 * Ajoute une livre, pas de problème de session ou de commit/rollback ici.
+	 */
 	public boolean add(Book b) {
 		try {
 			entityManager.persist(b);
@@ -79,6 +99,9 @@ public class BookRepository {
 
 	}
 
+	/*
+	 * Même problème que pour delete
+	 */
 	public boolean update(Book b) {
 		try {
 			entityManager.merge(b);

@@ -33,6 +33,24 @@ public class JPAConfiguration {
 	@Autowired
 	private Environment env;
 	
+	/*
+	 * Erreurs fréquentes : 
+	 * - Attention que les dépendances dans le pom soit cohérentes ! 
+	 * - Attention qu'il n'y ait pas de doublons dans les dépendances !
+	 * - Au moindre doute, supprimer le .m2;
+	 * - Ne pas hésiter à clean le projet;
+	 * - Attention que tous les fichiers soient dans des sous dossier du dossier ou se situe le main;
+	 * - Veiller à ce que le application.properties contienne les bonnes valeurs, associées aux bonnes variables !
+	 * - Ne pas oublier les @ ! 
+	 * 		@Bean au dessus de TOUTES LES METHODES DU CONFIG;
+	 * 		@Configuration, @PropertySource (si on utilise un application.propertie) et @EnableTransactionManagement au dessus de la classe;
+	 * 		@Autowired au dessus de l'Environnement qui doit être PRIVATE et non STATIC;
+	 * - Attention que le chemin du PackageToScan dans entityManagerFactory est bien le chemin du sous package des OBJETS;
+	 * - Ne pas oublier @Entity au dessus des class OBJETS;
+	 * - Ne pas oublier le @Repository et le @Transactional au dessus de la class
+	 * - ne pas oublier le @PersistenceContext au dessus de l'EntityManager qui doit être PRIVATE et non STATIC
+	 * 
+	 */
 	
 	
 
