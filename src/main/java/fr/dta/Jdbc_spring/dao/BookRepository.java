@@ -81,8 +81,6 @@ public class BookRepository {
 	public boolean delete(Book id) {
 		try {
 			entityManager.remove(entityManager.contains(id) ? id : entityManager.merge(id));
-			//entityManager.remove(id);
-			
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

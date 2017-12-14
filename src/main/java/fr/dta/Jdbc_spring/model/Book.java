@@ -9,7 +9,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Book {
+public class Book extends AbstractEntity{
 
 	@Column
 	private String title;
