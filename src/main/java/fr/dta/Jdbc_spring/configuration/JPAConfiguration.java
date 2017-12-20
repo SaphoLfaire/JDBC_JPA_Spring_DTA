@@ -2,9 +2,7 @@ package fr.dta.Jdbc_spring.configuration;
 
 import java.util.Properties;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
